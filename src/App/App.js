@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
+import Header from '../Header/Header';
+import Posts from '../Posts/Posts';
 import './App.css';
-
 
 class App extends Component {
     constructor(props) {
@@ -8,8 +9,16 @@ class App extends Component {
         this.state = {
             text: ""
         }
+        this.API_URL = "http://localhost:5000";
+        this.refreshData()
+    }
+
+    refreshData() {
+        // Save scoped reference to myself
         let _self = this;
-        fetch("http://localhost:5000")
+
+        // Fetch the data please
+        fetch(this.API_URL)
             .then(function(response){
                 if (response.status !== 200) {
                     console.log('Looks like there was a problem. Status Code: '
@@ -26,7 +35,8 @@ class App extends Component {
     render() {
         return (
             <div className="App">
-                <p> {this.state.text} </p>
+                <Header text={this.state.text}/>
+                <Posts />
             </div>
         );
     }

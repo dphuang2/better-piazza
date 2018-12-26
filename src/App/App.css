@@ -1,7 +1,16 @@
 .App {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+    min-height: 100vh;
+    display: grid;
+    grid-auto-columns: 1fr;
+    grid-auto-rows: 1fr;
+    background-color: var(--app-background-color);
+    grid-template-areas:
+    "hder hder hder hder hder hder"
+    "psts psts cntn cntn cntn cntn"
+    "psts psts cntn cntn cntn cntn"
+    "psts psts cntn cntn cntn cntn"
+    "psts psts cntn cntn cntn cntn"
+    "psts psts cntn cntn cntn cntn" 
+    "psts psts cntn cntn cntn cntn" 
+    "psts psts cntn cntn cntn cntn";
 }

@@ -1,3 +1,12 @@
+:root {
+    /*Declare global variables*/
+    /*--anchor-text-color: #61dafb;*/
+    --anchor-text-color: #9CC3DE;
+    --app-background-color: #150332;
+    --desktop-font-size: 10px;
+    --default-text-color: #ECEBEA;
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -7,17 +16,11 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 
-    /*Declare global variables*/
-    /*--anchor-text-color: #61dafb;*/
-    --anchor-text-color: #9CC3DE;
-    --app-background-color: #150332;
-    --desktop-font-size: 10px;
-    --default-text-color: #ECEBEA;
+}
 
+* {
     /*Declare some global css properties*/
-    background-color: var(--app-background-color);
     color: var(--default-text-color);
-    font-size: calc(var(--desktop-font-size) + 2vmin);
 }
 
 
