@@ -13,8 +13,8 @@ class App extends Component {
             posts: [],
             currentPost: 0
         }
-        this.API_URL = "http://localhost:5000"
         this.GET_POSTS = "/posts"
+        this.GET_HEADER = "/header"
         this.refreshData()
         this.onPostClick = this.onPostClick.bind(this)
     }
@@ -35,7 +35,7 @@ class App extends Component {
         let _self = this;
 
         // Get the header data
-        var header = fetch(this.API_URL)
+        var header = fetch(this.GET_HEADER)
             .then(this.status)
             .then((res) => res.text())
             .then(function(data) {
@@ -43,13 +43,12 @@ class App extends Component {
             });
 
         // Get all the posts
-        var posts = fetch(this.API_URL + this.GET_POSTS)
+        var posts = fetch(this.GET_POSTS)
             .then(this.status)
             .then((res) => res.json())
             .then(function(data) {
                 _self.setState({posts: data})
             });
-
 
         var all = Promise.all([header, posts])
         all.then(([header, posts]) => {

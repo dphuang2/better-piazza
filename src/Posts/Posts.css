@@ -5,10 +5,13 @@
     color: black;
     display: grid;
     grid-row-gap: 1px;
+    overflow: scroll;
 }
 
 .Post {
     padding: 5px;
+    height: 200px;
     background-color: white;
     overflow: scroll;
+    box-sizing: border-box;
 }
