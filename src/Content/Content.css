@@ -1,0 +1,6 @@
+.Content {
+    grid-area: cntn;
+    background-color: gray;
+    text-align: center;
+    color: black;
+}

@@ -18,12 +18,6 @@ body {
 
 }
 
-* {
-    /*Declare some global css properties*/
-    color: var(--default-text-color);
-}
-
-
 a {
     /*Just making hyperlinks look nice*/
     color: var(--anchor-text-color);

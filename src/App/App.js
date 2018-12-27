@@ -1,42 +1,74 @@
 import React, { Component } from 'react';
 import Header from '../Header/Header';
 import Posts from '../Posts/Posts';
+import Content from '../Content/Content';
 import './App.css';
 
 class App extends Component {
+
     constructor(props) {
         super(props)
         this.state = {
-            text: ""
+            text: "",
+            posts: [],
+            currentPost: 0
         }
-        this.API_URL = "http://localhost:5000";
+        this.API_URL = "http://localhost:5000"
+        this.GET_POSTS = "/posts"
         this.refreshData()
+        this.onPostClick = this.onPostClick.bind(this)
+    }
+
+    onPostClick(index) {
+        this.setState({currentPost: index})
+    }
+
+    status(response) {
+        if (response.status >= 200 && response.status < 300) {
+            return Promise.resolve(response)
+        } else {
+            return Promise.reject(new Error(response.statusText))
+        }
     }
 
     refreshData() {
-        // Save scoped reference to myself
         let _self = this;
 
-        // Fetch the data please
-        fetch(this.API_URL)
-            .then(function(response){
-                if (response.status !== 200) {
-                    console.log('Looks like there was a problem. Status Code: '
-                        + response.status);
-                    return;
-                }
-                // Examine the text in the response
-                response.text().then(function(data) {
-                    _self.setState({text: data})
-                });
-            })
+        // Get the header data
+        var header = fetch(this.API_URL)
+            .then(this.status)
+            .then((res) => res.text())
+            .then(function(data) {
+                _self.setState({text: data})
+            });
+
+        // Get all the posts
+        var posts = fetch(this.API_URL + this.GET_POSTS)
+            .then(this.status)
+            .then((res) => res.json())
+            .then(function(data) {
+                _self.setState({posts: data})
+            });
+
+
+        var all = Promise.all([header, posts])
+        all.then(([header, posts]) => {
+            console.log("refreshData")
+            console.log(_self.state);
+        })
     }
 
     render() {
+        let content = (this.state.posts.length === 0) ? "No Content" :
+            this.state.posts[this.state.currentPost].about
         return (
             <div className="App">
                 <Header text={this.state.text}/>
-                <Posts />
+                <Posts 
+                    posts={this.state.posts}
+                    onPostClick={this.onPostClick}
+                />
+                <Content content={content}/>
             </div>
         );
     }

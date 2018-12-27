@@ -1,6 +1,14 @@
 .Posts {
     grid-area: psts;
-    background-color: white;
+    background-color: gray;
     text-align: center;
     color: black;
+    display: grid;
+    grid-row-gap: 1px;
+}
+
+.Post {
+    padding: 5px;
+    background-color: white;
+    overflow: scroll;
 }
