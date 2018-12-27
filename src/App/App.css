@@ -6,11 +6,11 @@
     background-color: var(--app-background-color);
     grid-template-areas:
     "hder hder hder hder hder hder"
-    "psts psts cntn cntn cntn cntn"
-    "psts psts cntn cntn cntn cntn"
-    "psts psts cntn cntn cntn cntn"
-    "psts psts cntn cntn cntn cntn"
-    "psts psts cntn cntn cntn cntn" 
-    "psts psts cntn cntn cntn cntn" 
-    "psts psts cntn cntn cntn cntn";
+    "psts psts psts cntn cntn cntn"
+    "psts psts psts cntn cntn cntn"
+    "psts psts psts cntn cntn cntn"
+    "psts psts psts cntn cntn cntn"
+    "psts psts psts cntn cntn cntn" 
+    "psts psts psts cntn cntn cntn" 
+    "psts psts psts cntn cntn cntn";
 }
